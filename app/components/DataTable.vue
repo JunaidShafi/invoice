@@ -13,7 +13,6 @@ let loading = ref(true);
 const items = await $fetch("/fetchdata", {
   method: "GET",
 });
-await console.log(items);
 loading = false;
 </script>
 
