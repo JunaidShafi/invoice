@@ -10,7 +10,14 @@ import {
 } from "@/components/ui/table";
 
   const {pending, data:items} =  useFetch("/fetchdata")
-const handledelete =async() => console.log("clicked")
+function handledelete(item){
+  console.log("clicked")
+ const { pending, data:response} =  $fetch(`/removeitem/${item}`);
+ if (!pending){
+  console.log("ifblock")
+  refreshNuxtData()
+ }
+}
 const handleupdate =async() =>await $fetch("/updatedata")
 
 </script>
@@ -39,12 +46,12 @@ const handleupdate =async() =>await $fetch("/updatedata")
             <TableCell> {{ item.current_status.toUpperCase() }} </TableCell>
             <TableCell class="text-right"> {{ item.amount }} </TableCell>
             <TableCell class="text-right">
-              <Button variant="destructive">
+              <Button variant="destructive" @click=handledelete(item.id)>
                 x</Button
               >
             </TableCell>
             <TableCell class="text-right">
-              <Button variant="secondary"> Update</Button>
+              <Button  variant="secondary" @click=handledelete(item.id)> Update</Button>
             </TableCell>
           </TableRow>
         </TableBody>

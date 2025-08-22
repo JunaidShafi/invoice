@@ -8,7 +8,7 @@ useHead({
 </script>
 <template>
   <div>
-    <!-- <NuxtLoadingIndicator/> -->
+    <NuxtLoadingIndicator/> 
     <Landing />
   </div>
 </template>

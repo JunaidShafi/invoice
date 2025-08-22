@@ -47,6 +47,7 @@ const onSubmit = form.handleSubmit(async (values) => {
       body: values,
     });
     form.resetForm();
+    await navigateTo("/dashboard")
   } catch (error) {
     console.log(error);
   }
