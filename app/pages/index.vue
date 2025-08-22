@@ -8,6 +8,7 @@ useHead({
 </script>
 <template>
   <div>
+    <!-- <NuxtLoadingIndicator/> -->
     <Landing />
   </div>
 </template>

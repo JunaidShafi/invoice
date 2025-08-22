@@ -1,4 +1,4 @@
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)','/dashboard(.*)'])
+const isProtectedRoute = createRouteMatcher(['/dashboard(.*)'])
 
 export default defineNuxtRouteMiddleware((to) => {
   const { userId } = useAuth()

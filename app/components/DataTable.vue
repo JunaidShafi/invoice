@@ -8,18 +8,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-let loading = ref(true);
 
-const items = await $fetch("/fetchdata", {
-  method: "GET",
-});
-loading = false;
+  const {pending, data:items} =  useFetch("/fetchdata")
+const handledelete =async() => console.log("clicked")
+const handleupdate =async() =>await $fetch("/updatedata")
+
 </script>
 
 <template>
   <div class="w-3/4">
     <h1 class="font-extrabold text-3xl">Invoices</h1>
-    <div v-if="!loading">
+    <div>
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -32,15 +31,15 @@ loading = false;
             <TableHead class="text-right"> Update Status </TableHead>
           </TableRow>
         </TableHeader>
-
-        <TableBody>
+          <div v-if="pending">Loading Items</div>
+        <TableBody v-if="!pending">
           <TableRow v-for="item in items" :key="item.id">
             <TableCell class="font-medium">{{ item.customername }} </TableCell>
             <TableCell>{{ item.typeofproduct }}</TableCell>
             <TableCell> {{ item.current_status.toUpperCase() }} </TableCell>
             <TableCell class="text-right"> {{ item.amount }} </TableCell>
             <TableCell class="text-right">
-              <Button onclick="console.log({{id}})" variant="destructive">
+              <Button variant="destructive">
                 x</Button
               >
             </TableCell>
