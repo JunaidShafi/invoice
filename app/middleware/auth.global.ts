@@ -1,0 +1,16 @@
+const isProtectedRoute = createRouteMatcher(['/dashboard(.*)','/dashboard(.*)'])
+
+export default defineNuxtRouteMiddleware((to) => {
+  const { userId } = useAuth()
+  
+
+  // If the user is not signed in, they aren't allowed to access
+  // the protected route and are redirected to the sign-in page
+  if (!userId.value && isProtectedRoute(to)) {
+    return navigateTo('/signin')
+  }
+
+   if (userId.value && (to.fullPath==="/signin"|| to.fullPath==="/") ){
+    return navigateTo('/dashboard')
+  }
+})
