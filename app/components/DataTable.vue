@@ -44,8 +44,8 @@ const itempage =(item)=>{
         </TableHeader>
           <div v-if="pending">Loading Items</div>
         <TableBody v-if="!pending">
-          <TableRow v-for="item in items" :key="item.id" @click = itempage(item.id) >
-             <TableCell class="text-left">{{ item.id }} </TableCell>
+          <TableRow v-for="(item,index) in items" :key="item.id" @click = itempage(item.id) >
+             <TableCell class="text-left">{{index+1}} </TableCell>
             <TableCell class="font-medium">{{ item.customername }} </TableCell>
             <TableCell>{{ item.typeofproduct }}</TableCell>
             <TableCell> {{ item.current_status.toUpperCase() }} </TableCell>
