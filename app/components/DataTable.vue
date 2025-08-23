@@ -11,14 +11,15 @@ import {
 
   const {pending, data:items} =  useFetch("/fetchdata")
 function handledelete(item){
-  console.log("clicked")
  const { pending, data:response} =  $fetch(`/removeitem/${item}`);
  if (!pending){
   console.log("ifblock")
   refreshNuxtData()
  }
 }
-const handleupdate =async() =>await $fetch("/updatedata")
+const itempage =(item)=>{
+  navigateTo(`/invoice/${item}`)
+}
 
 </script>
 
@@ -30,32 +31,30 @@ const handleupdate =async() =>await $fetch("/updatedata")
     <div>
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
+        <TableHeader class="">
           <TableRow>
+            <TableHead>S/No.</TableHead>
             <TableHead> Customer Name</TableHead>
             <TableHead>Type of Product</TableHead>
             <TableHead> Status </TableHead>
             <TableHead class="text-right"> Amount </TableHead>
-            <TableHead class="text-right"> Delete </TableHead>
-            <TableHead class="text-right"> Update Status </TableHead>
+      
+       
           </TableRow>
         </TableHeader>
           <div v-if="pending">Loading Items</div>
         <TableBody v-if="!pending">
-          <TableRow v-for="item in items" :key="item.id">
+          <TableRow v-for="item in items" :key="item.id" @click = itempage(item.id) >
+             <TableCell class="text-left">{{ item.id }} </TableCell>
             <TableCell class="font-medium">{{ item.customername }} </TableCell>
             <TableCell>{{ item.typeofproduct }}</TableCell>
             <TableCell> {{ item.current_status.toUpperCase() }} </TableCell>
-            <TableCell class="text-right"> {{ item.amount }} </TableCell>
+            <TableCell class="text-right"> {{ item.amount }} </TableCell>   </TableRow>
             <TableCell class="text-right">
-              <Button variant="destructive" @click=handledelete(item.id)>
-                x</Button
-              >
+            
             </TableCell>
-            <TableCell class="text-right">
-              <Button  variant="secondary" @click=handledelete(item.id)> Update</Button>
-            </TableCell>
-          </TableRow>
+              
+       
         </TableBody>
       </Table>
     </div>

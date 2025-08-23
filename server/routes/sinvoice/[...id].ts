@@ -12,9 +12,9 @@ interface datatype{
    
 }
 
-async function getInvoices(userId:string|null) {
+async function getInvoices(userId:string|null, invoiceid) {
 
-  const { data,error} = await db.from('invoices').select().eq('user_id',userId).order("id",{ascending:true})
+  const { data,error} = await db.from('invoices').select().eq('user_id',userId).eq('id',invoiceid)
 
     if (error) {
     console.error('Error fetching data:', error.message);
@@ -24,9 +24,12 @@ async function getInvoices(userId:string|null) {
 }
 
 export default defineEventHandler(async (event)=>{
-        const {userId} = event.context.auth()
 
-   const invdata = getInvoices(userId)
+
+        const {userId} = event.context.auth()
+ 
+
+   const invdata = getInvoices(userId, event.context.params.id)
    return    invdata 
    
 })

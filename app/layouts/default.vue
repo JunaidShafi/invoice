@@ -1,8 +1,6 @@
 <script setup></script>
 <template>
-  <NuxtLoadingIndicator {
-   
-  }/>
+  <NuxtLoadingIndicator/>
   <div
     class="flex flex-col mx-0.5 justify-between min-h-screen overflow-hidden"
   >
