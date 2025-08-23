@@ -24,6 +24,8 @@ const handleupdate =async() =>await $fetch("/updatedata")
 
 <template>
   <div class="w-3/4">
+    
+   
     <h1 class="font-extrabold text-3xl">Invoices</h1>
     <div>
       <Table>

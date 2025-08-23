@@ -21,12 +21,12 @@ const { userId, isLoaded } = useAuth();
       </div>
       <div v-if="userId">
         <Button variant="outline" as-child>
-          <NuxtLink to="/signin">Dashboard</NuxtLink>
+          <NuxtLink to="/dashboard">Dashboard</NuxtLink>
         </Button>
       </div>
       <div v-if="userId">
         <Button variant="outline" as-child>
-          <NuxtLink to="/signin">Reports</NuxtLink>
+          <NuxtLink to="/reports">Reports</NuxtLink>
         </Button>
       </div>
     </div>
