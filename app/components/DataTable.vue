@@ -9,7 +9,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-  const {pending, data:items} =  useFetch("/fetchdata")
+  const {pending, data:items} =  useFetch("/fetchdata");
+
 function handledelete(item){
  const { pending, data:response} =  $fetch(`/removeitem/${item}`);
  if (!pending){
@@ -23,12 +24,32 @@ const itempage =(item)=>{
 
 </script>
 
+
 <template>
-  <div class="w-3/4">
+  <div class=" flex flex-col w-full justify-center items-center">
+    <div class="flex justify-end items-end w-3/4 mx-5">
+<div class=" flex justify-end">
+  <Button variant="ghost" as-child>
+   
+      <download-excel :data = "items" name="Data.xls" > 
+        
+    <IconsExcel/>
+      </download-excel>
+       </Button>
+      </div>
+
+
+
+
+    </div>
+  
+  
+
+  <div class="w-3/5">
     
    
     <h1 class="font-extrabold text-3xl">Invoices</h1>
-    <div>
+    <div >
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader class="">
@@ -57,6 +78,6 @@ const itempage =(item)=>{
        
         </TableBody>
       </Table>
-    </div>
+    </div></div>
   </div>
 </template>
