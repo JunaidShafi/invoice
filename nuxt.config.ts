@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'shadcn-nuxt',
     '@clerk/nuxt',
+    "nuxt-charts"
    
     
   ],

@@ -36,12 +36,17 @@ const formSchema = toTypedSchema(
   })
 );
 
+
+
+const loading = ref(false)
 const form = useForm({
   validationSchema: formSchema,
 });
 
 const onSubmit = form.handleSubmit(async (values) => {
   try {
+    loading.value = !loading.value 
+    console.log(loading.value)
     const response = await $fetch("/formdata", {
       method: "POST",
       body: values,
@@ -126,7 +131,8 @@ const onSubmit = form.handleSubmit(async (values) => {
         </FormField>
       </div>
       <div>
-        <Button type="submit"> Submit </Button>
+        <Button type="submit" v-if="!loading" >Submit</Button>
+        <Button  disabled class="bg-gray-700" v-if="loading" ><IconsSpinner /> </Button>
       </div>
     </form>
   </div>

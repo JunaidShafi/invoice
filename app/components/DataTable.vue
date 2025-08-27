@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge"
 
   const {pending, data:items} =  useFetch("/fetchdata");
 
@@ -22,13 +23,15 @@ const itempage =(item)=>{
   navigateTo(`/invoice/${item}`)
 }
 
+
+
 </script>
 
 
 <template>
   <div class=" flex flex-col w-full justify-center items-center">
     <div class="flex justify-end items-end w-3/4 mx-5">
-<div class=" flex justify-end">
+<!-- <div class=" flex justify-end">
   <Button variant="ghost" as-child>
    
       <download-excel :data = "items" name="Data.xls" > 
@@ -36,7 +39,7 @@ const itempage =(item)=>{
     <IconsExcel/>
       </download-excel>
        </Button>
-      </div>
+      </div> -->
 
 
 
@@ -69,7 +72,11 @@ const itempage =(item)=>{
              <TableCell class="text-left">{{index+1}} </TableCell>
             <TableCell class="font-medium">{{ item.customername }} </TableCell>
             <TableCell>{{ item.typeofproduct }}</TableCell>
-            <TableCell> {{ item.current_status.toUpperCase() }} </TableCell>
+            <TableCell class="flex justify-center items-center"> <Badge :class="{'bg-green-500': item.current_status==='paid', 'bg-red-500': item.current_status==='unpaid'}"  >
+{{ item.current_status.toUpperCase() }}
+
+
+            </Badge>    </TableCell>
             <TableCell class="text-right"> {{ item.amount }} </TableCell>   </TableRow>
             <TableCell class="text-right">
             
