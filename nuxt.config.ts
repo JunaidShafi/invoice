@@ -21,7 +21,8 @@ export default defineNuxtConfig({
       supabaseAnonKey: process.env.SUPABASE_PUBLISHABLE_KEY,
     },
 
-  }
+  },
+    sourcemap: false,
   },
   
 )
