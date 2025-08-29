@@ -3,19 +3,28 @@ useHead({
   title: "Dashboard",
   meta: [{ name: "description", content: "My amazing site." }],
 });
+
+
+const {pending, data:resp} =  useFetch("/fetchdata");
+
+
+
+
+
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div v-if="!pending" class="flex flex-col pt-0.5 mt-0.5">
 
-   <div>
-  <Dpaid/>
+   <div class=" flex justify-center items-center  w-3/5 pt-0.5 mt-0.5">
+   <Dpaid :items="resp.inv" :pending :acountPaid="resp.paid" :acountUnpaid="resp.unpaid"/>
    </div>
   <div class="flex justify-center items-center">
-    <DataTable />
+    <DataTable :items="resp.inv" :pending/>
   
-</div>
-
- 
+</div> 
   </div>
+<div v-else >Loading</div>
+
+
 </template>

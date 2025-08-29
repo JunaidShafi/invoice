@@ -14,8 +14,12 @@ import {
 const route = useRoute();
 
 async function handledelete() {
+  if(route.params.id){
   await $fetch(`/removeitem/${route.params.id[0]}`);
-  navigateTo("/dashboard");
+  navigateTo("/dashboard");}
+  else{
+    navigateTo("/dashboard")
+  }
 }
 </script>
 

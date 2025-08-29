@@ -1,4 +1,5 @@
 <script setup>
+const props = defineProps(['items','pending'])
 import {
   Table,
   TableBody,
@@ -9,28 +10,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge"
-
-  const {pending, data:items} =  useFetch("/fetchdata");
-
-function handledelete(item){
- const { pending, data:response} =  $fetch(`/removeitem/${item}`);
- if (!pending){
-  console.log("ifblock")
-  refreshNuxtData()
- }
-}
 const itempage =(item)=>{
   navigateTo(`/invoice/${item}`)
 }
-
-
-
 </script>
 
 
 <template>
-  <div class=" flex flex-col w-full justify-center items-center">
-    <div class="flex justify-end items-end w-3/4 mx-5">
+  <div class=" flex flex-col w-full justify-center items-center pt-0.5 mt-8">
+    <!-- <div class="flex justify-end items-end w-3/4 mx-5"> -->
 <!-- <div class=" flex justify-end">
   <Button variant="ghost" as-child>
    
@@ -44,7 +32,7 @@ const itempage =(item)=>{
 
 
 
-    </div>
+    <!-- </div> -->
   
   
 
@@ -78,11 +66,6 @@ const itempage =(item)=>{
 
             </Badge>    </TableCell>
             <TableCell class="text-right"> {{ item.amount }} </TableCell>   </TableRow>
-            <TableCell class="text-right">
-            
-            </TableCell>
-              
-       
         </TableBody>
       </Table>
     </div></div>

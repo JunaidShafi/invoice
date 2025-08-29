@@ -16,8 +16,8 @@ const updated = ref("");
 const route = useRoute();
 
 async function handleupdate() {
-  try {
-    await $fetch(`/updateitem/${route.params.id[0]}`, {
+  try {       await $fetch(`/updateitem/${route.params.id[0]}`, {
+
       method: "PUT",
       body: {
         stat: updated.value,

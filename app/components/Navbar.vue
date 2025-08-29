@@ -1,5 +1,6 @@
 <script setup>
 const { userId, isLoaded } = useAuth();
+const atry = ref(true)
 </script>
 
 <template>
@@ -19,6 +20,7 @@ const { userId, isLoaded } = useAuth();
           <NuxtLink to="/createinvoice">Create Invoice</NuxtLink>
         </Button>
       </div>
+     
       <div v-if="userId">
         <Button variant="outline" as-child>
           <NuxtLink to="/dashboard">Dashboard</NuxtLink>
