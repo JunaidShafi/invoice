@@ -1,14 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from "@tailwindcss/vite"
 export default defineNuxtConfig({
-
-
-//  vue: {
-//     compilerOptions: {
-//       // Example: Treat all tags starting with "my-" as custom elements
-//       isCustomElement: (tag) => tag.startsWith('download-excel')
-//     }
-//   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/ui', 'shadcn-nuxt', '@clerk/nuxt', "nuxt-charts", ],
